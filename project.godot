@@ -15,6 +15,25 @@ run/main_scene="uid://bcojjhf0g70wk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[input]
+
+input_action_mouseclick_left={
+"deadzone": 0.2,
+"events": []
+}
+input_action_mouseclick_right={
+"deadzone": 0.2,
+"events": []
+}
+input_action_esc={
+"deadzone": 0.2,
+"events": []
+}
+input_action_enter={
+"deadzone": 0.2,
+"events": []
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
