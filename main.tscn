@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bcojjhf0g70wk"]
+
+[ext_resource type="Script" uid="uid://c3flysk0js6t6" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dv3ody4tilqyu" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://t1va7jmjf40s" path="res://rts_camera.tscn" id="3_1bvp3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("1_ig7tw")
+uv1_scale = Vector3(6, 6, 6)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7mycd"]
+material = SubResource("StandardMaterial3D_lquwl")
+size = Vector2(250, 250)
+
+[sub_resource type="PrismMesh" id="PrismMesh_h2yge"]
+
+[node name="Main" type="Node" unique_id=739706149]
+script = ExtResource("1_h2yge")
+
+[node name="World" type="Node3D" parent="." unique_id=575765532]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=146592876]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1532313577]
+environment = SubResource("Environment_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World" unique_id=780505741]
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="RTSCamera" parent="World" unique_id=1901384065 instance=ExtResource("3_1bvp3")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World" unique_id=2027842203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.314823)
+mesh = SubResource("PrismMesh_h2yge")
