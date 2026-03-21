@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bcojjhf0g70wk"]
 
 [ext_resource type="Script" uid="uid://c3flysk0js6t6" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cnhj1bm5h82a8" path="res://rts_player.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c67ebpdh1j63i" path="res://assets/Poliigon_GrassPatchyGround_4585_BaseColor.jpg" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://t1va7jmjf40s" path="res://rts_camera.tscn" id="3_1bvp3"]
 
@@ -19,6 +20,7 @@ tonemap_mode = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_texture = ExtResource("2_h2yge")
 uv1_scale = Vector3(6, 6, 6)
+texture_filter = 5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7mycd"]
 material = SubResource("StandardMaterial3D_lquwl")
@@ -29,33 +31,41 @@ size = Vector2(250, 250)
 [node name="Main" type="Node" unique_id=739706149]
 script = ExtResource("1_h2yge")
 
-[node name="World" type="Node3D" parent="." unique_id=575765532]
+[node name="RtsWorld" type="Node3D" parent="." unique_id=575765532]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=146592876]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RtsWorld" unique_id=146592876]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1532313577]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="RtsWorld" unique_id=1532313577]
 environment = SubResource("Environment_1bvp3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World" unique_id=780505741]
+[node name="Grass" type="MeshInstance3D" parent="RtsWorld" unique_id=780505741]
 mesh = SubResource("PlaneMesh_7mycd")
 
-[node name="RTSCamera" parent="World" unique_id=1901384065 instance=ExtResource("3_1bvp3")]
+[node name="RTSCamera" parent="RtsWorld" unique_id=1901384065 instance=ExtResource("3_1bvp3")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World" unique_id=2027842203]
+[node name="Buildings" type="Node" parent="RtsWorld" unique_id=101437626]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=2027842203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.314823)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World" unique_id=705345752]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=705345752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6150975, 0, -3.9232883)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="World" unique_id=1580324351]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1580324351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.265518, 0, -7.3316)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="World" unique_id=1584849651]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1584849651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6504207, 0, -0.9400654)
 mesh = SubResource("PrismMesh_h2yge")
+
+[node name="UI" type="Control" parent="." unique_id=131182315]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
