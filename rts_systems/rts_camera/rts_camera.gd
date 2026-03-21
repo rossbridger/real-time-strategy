@@ -15,18 +15,10 @@ func _ready() -> void:
 	_setup_camera(camera_3d)
 
 func _process(delta: float) -> void:
-	camera_pan(delta)
-	camera_move(delta)
-	camera_rotate(delta)
-	camera_zoom(delta)
 	_apply_movement_velocity()
 	_apply_zoom_velocity()
 
-func camera_pan(delta: float) -> void:
-	if Input.mouse_mode != Input.MOUSE_MODE_CONFINED:
-		return
-	var mouse_pos = get_viewport().get_mouse_position()
-	var viewport_size = get_viewport().get_visible_rect().size
+func camera_pan(mouse_pos: Vector2, viewport_size: Vector2, delta: float) -> void:
 	if mouse_pos.x < CAMERA_PAN_MARGIN:
 		cam_movement_velocity.x = -1 * delta
 	if mouse_pos.y < CAMERA_PAN_MARGIN:
@@ -36,27 +28,15 @@ func camera_pan(delta: float) -> void:
 	if mouse_pos.y > viewport_size.y - CAMERA_PAN_MARGIN:
 		cam_movement_velocity.z = 1 * delta
 
-func camera_move(delta: float) -> void:
-	if Input.is_action_pressed("camera_forward"):
-		cam_movement_velocity.z = -1 * delta
-	if Input.is_action_pressed("camera_backward"):
-		cam_movement_velocity.z = 1 * delta
-	if Input.is_action_pressed("camera_left"):
-		cam_movement_velocity.x = -1 * delta
-	if Input.is_action_pressed("camera_right"):
-		cam_movement_velocity.x = 1 * delta
+func camera_move(direction: Vector2, delta: float) -> void:
+		cam_movement_velocity.x = direction.x * delta
+		cam_movement_velocity.z = direction.y * delta
 
-func camera_rotate(delta: float) -> void:
-	if Input.is_action_pressed("camera_rotate_right"):
-		global_rotation.y += CAMERA_ROTATION_SPEED * delta
-	if Input.is_action_pressed("camera_rotate_left"):
-		global_rotation.y -= CAMERA_ROTATION_SPEED * delta
+func camera_rotate(direction: float, delta: float) -> void:
+		global_rotation.y += direction * CAMERA_ROTATION_SPEED * delta
 
-func camera_zoom(delta: float) -> void:
-	if Input.is_action_just_pressed("camera_zoom_in"):
-		cam_zoom_velocity -= (CAMERA_ZOOM_SPEED * 1000) * delta
-	if Input.is_action_just_pressed("camera_zoom_out"):
-		cam_zoom_velocity += (CAMERA_ZOOM_SPEED * 1000) * delta
+func camera_zoom(direction: float, delta: float) -> void:
+	cam_zoom_velocity += direction * (CAMERA_ZOOM_SPEED * 1000) * delta
 
 func _setup_camera(cam: Camera3D) -> void:
 	cam.fov = 10

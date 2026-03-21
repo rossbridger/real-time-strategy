@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bcojjhf0g70wk"]
 
 [ext_resource type="Script" uid="uid://c3flysk0js6t6" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cnhj1bm5h82a8" path="res://rts_player.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cnhj1bm5h82a8" path="res://rts_systems/rts_player/rts_player.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c67ebpdh1j63i" path="res://assets/Poliigon_GrassPatchyGround_4585_BaseColor.jpg" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://t1va7jmjf40s" path="res://rts_camera.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://t1va7jmjf40s" path="res://rts_systems/rts_camera/rts_camera.tscn" id="3_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +33,8 @@ script = ExtResource("1_h2yge")
 
 [node name="RtsWorld" type="Node3D" parent="." unique_id=575765532]
 
+[node name="RtsPlayer" parent="RtsWorld" unique_id=812780877 instance=ExtResource("2_1bvp3")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="RtsWorld" unique_id=146592876]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
@@ -48,21 +50,23 @@ mesh = SubResource("PlaneMesh_7mycd")
 
 [node name="Buildings" type="Node" parent="RtsWorld" unique_id=101437626]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=2027842203]
+[node name="Tents" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=2027842203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.314823)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=705345752]
+[node name="Tents2" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=705345752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6150975, 0, -3.9232883)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1580324351]
+[node name="Tents3" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1580324351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.265518, 0, -7.3316)
 mesh = SubResource("PrismMesh_h2yge")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1584849651]
+[node name="Tents4" type="MeshInstance3D" parent="RtsWorld/Buildings" unique_id=1584849651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6504207, 0, -0.9400654)
 mesh = SubResource("PrismMesh_h2yge")
+
+[node name="Units" type="Node" parent="RtsWorld" unique_id=2145322661]
 
 [node name="UI" type="Control" parent="." unique_id=131182315]
 layout_mode = 3

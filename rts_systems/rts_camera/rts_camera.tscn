@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://t1va7jmjf40s"]
 
-[ext_resource type="Script" uid="uid://bm3hog4eq3ybi" path="res://rts_camera.gd" id="1_0j2uc"]
+[ext_resource type="Script" uid="uid://bm3hog4eq3ybi" path="res://rts_systems/rts_camera/rts_camera.gd" id="1_0j2uc"]
 
 [node name="RTSCamera" type="Node3D" unique_id=1901384065]
 script = ExtResource("1_0j2uc")
