@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d6ixlbwdyc0i"]
+
+[ext_resource type="ArrayMesh" uid="uid://btecda6pkqcp7" path="res://rts_objects/resources/gold/mesh.tres" id="1_ghhe8"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(-2.1855694e-08, 1.4370569, 0.28664163, -0.5, -6.2815744e-08, -1.2529501e-08, 0, -0.4299624, 0.9580379, -0.11728388, 0.25110358, 0.19649854)
+radius = 0.6
+radial_segments = 4
+rings = 3
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(-0.05809843, 0.4980835, 0.675422, -0.28837997, -2.9412805e-08, -0.2756206, -0.058835167, -0.49184632, 0.68398714, 0.14677909, 0.5048342, -0.020361677)
+radius = 0.6
+radial_segments = 4
+rings = 3
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(-2.1855694e-08, 1.4758604, -0.178682, -0.5, -6.45119e-08, 7.810438e-09, 0, 0.26802298, 0.98390687, 0.3784052, 0.25110358, -0.4020672)
+radius = 0.6
+radial_segments = 4
+rings = 3
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(-2.1855694e-08, 1.2487295, 0.55404556, -0.5, -5.4583698e-08, -2.4218101e-08, 0, -0.83106834, 0.83248633, 0.5687588, 0.25110358, 0.5395206)
+radius = 0.6
+radial_segments = 4
+rings = 3
+
+[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4369931, 0, 2.6462808)
+mesh = ExtResource("1_ghhe8")

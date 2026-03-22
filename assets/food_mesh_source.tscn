@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dq22qtqfh636l"]
+
+[ext_resource type="ArrayMesh" uid="uid://dm7ar8537rj7c" path="res://rts_objects/resources/food/mesh.tres" id="1_0cm62"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.5
+radial_segments = 6
+rings = 3
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+radius = 0.7
+height = 1.5
+sides = 6
+
+[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+mesh = ExtResource("1_0cm62")

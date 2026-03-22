@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://drv7eryon8hvo"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj1ynrlqo8p01" path="res://rts_objects/resources/wood/mesh.tres" id="1_3n3aj"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+radius = 0.3
+height = 6.0
+sides = 6
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGMesh3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+radius = 1.5
+radial_segments = 6
+rings = 3
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9327402, 0, 2.395626)
+mesh = ExtResource("1_3n3aj")

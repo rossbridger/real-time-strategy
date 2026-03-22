@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://13elxmrvp3g6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_msn3t"]
+radial_segments = 4
+rings = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_csfwm"]
+size = Vector3(1, 1, 0.2)
+
+[node name="CSGMesh3D2" type="CSGMesh3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_msn3t")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.9, -1)
+mesh = SubResource("PrismMesh_csfwm")

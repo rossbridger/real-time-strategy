@@ -3,15 +3,36 @@ extends Node
 const TYPE_RTS_CAMERA := preload("../rts_camera/rts_camera.gd")
 
 @onready var rts_camera := $"../RTSCamera"
+@onready var selection_manager := $SelectionManager
+
+var mouse_dragbox_start_position := Vector2.ZERO
+var mouse_dragbox_end_position := Vector2.ZERO
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	camera_pan(rts_camera, delta)
-	camera_move(rts_camera, delta)
-	camera_rotate(rts_camera, delta)
-	camera_zoom(rts_camera, delta)
+	camera_inputs(rts_camera, delta)
+	selection_dragbox()
+
+func selection_dragbox() -> void:
+	if Input.is_action_pressed("mouseclick_left"):
+		mouse_dragbox_end_position = get_viewport().get_mouse_position()
+		if mouse_dragbox_start_position == Vector2.ZERO:
+			mouse_dragbox_start_position = mouse_dragbox_end_position
+		selection_manager.update_selection_rectangle(Rect2(
+				mouse_dragbox_start_position,
+				mouse_dragbox_end_position - mouse_dragbox_start_position))
+	if Input.is_action_just_released("mouseclick_left"):
+		mouse_dragbox_start_position = Vector2.ZERO
+		mouse_dragbox_end_position = Vector2.ZERO
+		selection_manager.dragbox_hide()
+
+func camera_inputs(camera: TYPE_RTS_CAMERA, delta: float):
+	camera_pan(camera, delta)
+	camera_move(camera, delta)
+	camera_rotate(camera, delta)
+	camera_zoom(camera, delta)
 
 func camera_pan(camera: TYPE_RTS_CAMERA, delta: float) -> void:
 	if Input.mouse_mode != Input.MOUSE_MODE_CONFINED:
