@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://vm0rd6yvnpca"]
 
 [ext_resource type="ArrayMesh" uid="uid://dvn2wab72isqq" path="res://rts_systems/rts_objects/units/basic_unit/mesh.tres" id="1_4ilfv"]
-[ext_resource type="Script" uid="uid://c7is55qo7kkwb" path="res://rts_systems/rts_objects/units/basic_unit/basic_unit_01.gd" id="2_3k237"]
+[ext_resource type="Script" uid="uid://c7is55qo7kkwb" path="res://rts_systems/rts_objects/units/basic_unit/main.gd" id="2_3k237"]
 [ext_resource type="PackedScene" uid="uid://dolfebim35fwf" path="res://rts_systems/rts_objects/units/components/circle_selection.tscn" id="2_lkx1p"]
+[ext_resource type="PackedScene" uid="uid://343fkiy34ibf" path="res://rts_systems/rts_objects/units/components/meshinstance3d_selection_aabb.tscn" id="4_3k237"]
 
 [node name="BasicUnit01" type="MeshInstance3D" unique_id=436773920]
 mesh = ExtResource("1_4ilfv")
@@ -11,3 +12,5 @@ script = ExtResource("2_3k237")
 [node name="CircleSelection" parent="." unique_id=541101418 instance=ExtResource("2_lkx1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 visible = false
+
+[node name="SelectionAABB" parent="." unique_id=475230419 instance=ExtResource("4_3k237")]
