@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c67ebpdh1j63i" path="res://assets/Poliigon_GrassPatchyGround_4585_BaseColor.jpg" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://t1va7jmjf40s" path="res://rts_systems/rts_camera/rts_camera.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d250h7iep1lxo" path="res://rts_systems/selection_manager/selection_manager.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://vm0rd6yvnpca" path="res://rts_systems/rts_objects/units/basic_unit/basic_unit_01.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -70,6 +71,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6504207, 0, -0.9400654)
 mesh = SubResource("PrismMesh_h2yge")
 
 [node name="Units" type="Node" parent="RtsWorld" unique_id=2145322661]
+
+[node name="BasicUnit01" parent="RtsWorld/Units" unique_id=436773920 instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2955818, 0, 2.5613456)
+
+[node name="BasicUnit02" parent="RtsWorld/Units" unique_id=1768328676 instance=ExtResource("6_7mycd")]
+transform = Transform3D(0.6843944, 0, 0.72911197, 0, 1, 0, -0.72911197, 0, 0.6843944, -3.269907, 0, -10.733694)
+
+[node name="BasicUnit03" parent="RtsWorld/Units" unique_id=448503865 instance=ExtResource("6_7mycd")]
+transform = Transform3D(-0.859674, 0, 0.51084304, 0, 1, 0, -0.51084304, 0, -0.859674, 5.90222, 0, -3.210383)
+
+[node name="BasicUnit04" parent="RtsWorld/Units" unique_id=1363798780 instance=ExtResource("6_7mycd")]
+transform = Transform3D(0.8482885, 0, -0.5295344, 0, 1, 0, 0.5295344, 0, 0.8482885, 7.5560007, 0, -8.833738)
 
 [node name="UI" type="Control" parent="." unique_id=131182315]
 layout_mode = 3

@@ -1,9 +1,11 @@
 extends Node
 
 const TYPE_RTS_CAMERA := preload("../rts_camera/rts_camera.gd")
+const TYPE_SELECTION_MANAGER := preload("../selection_manager/selection_manager.gd")
 
 @onready var rts_camera := $"../RTSCamera"
 @onready var selection_manager := $SelectionManager
+@onready var units := $"../Units"
 
 var mouse_dragbox_start_position := Vector2.ZERO
 var mouse_dragbox_end_position := Vector2.ZERO
@@ -22,8 +24,12 @@ func selection_dragbox() -> void:
 			mouse_dragbox_start_position = mouse_dragbox_end_position
 		selection_manager.update_selection_rectangle(Rect2(
 				mouse_dragbox_start_position,
-				mouse_dragbox_end_position - mouse_dragbox_start_position))
+				mouse_dragbox_end_position - mouse_dragbox_start_position).abs())
 	if Input.is_action_just_released("mouseclick_left"):
+		var dragbox_rectangle := Rect2(
+				mouse_dragbox_start_position,
+				mouse_dragbox_end_position - mouse_dragbox_start_position).abs()
+		selection_manager.dragbox_select_object(units.get_children(), dragbox_rectangle)
 		mouse_dragbox_start_position = Vector2.ZERO
 		mouse_dragbox_end_position = Vector2.ZERO
 		selection_manager.dragbox_hide()
